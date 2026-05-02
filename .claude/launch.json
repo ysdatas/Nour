@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "nour",
+      "runtimeExecutable": "/usr/bin/ruby",
+      "runtimeArgs": ["-run", "-e", "httpd", "/Users/ysdatabase/Desktop/Nour", "-p", "7788"],
+      "port": 7788
+    }
+  ]
+}

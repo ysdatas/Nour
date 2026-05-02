@@ -1,0 +1,7 @@
+/* Obligations */
+.oc{background:var(--card);border:.5px solid var(--gold-b);border-radius:12px;overflow:hidden;margin-bottom:.9rem}
+.oh{background:var(--gold-dim);padding:.8rem 1.2rem;border-bottom:.5px solid var(--gold-b);display:flex;align-items:center;gap:.65rem}
+.ob{padding:1rem 1.2rem}
+.od{font-size:.9rem;line-height:1.78;color:var(--iv70);margin-bottom:.7rem}
+.or-l{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem}
+.or-t{font-style:italic;font-size:.83rem;line-height:1.68;color:var(--iv40)}

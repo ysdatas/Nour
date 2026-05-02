@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"try { require\\('/Users/ysdatabase/Desktop/Nour/js/quran.js'\\); console.log\\('OK, SURAHS length:', typeof SURAHS !== 'undefined' ? SURAHS.length : 'undefined'\\); } catch\\(e\\) { console.log\\('ERREUR:', e.message, 'ligne', e.lineNumber || '?'\\); }\")",
+      "Read(//usr/local/bin/**)",
+      "Read(//opt/homebrew/bin/**)",
+      "WebFetch(domain:cdn.jsdelivr.net)",
+      "Bash(brew install *)",
+      "Bash(python3 -c \"import PyPDF2; print\\('ok'\\)\")",
+      "Bash(python3 -c \"import pdfplumber; print\\('ok'\\)\")",
+      "Bash(python3 -c \"import fitz; print\\('ok'\\)\")",
+      "Bash(pip3 install *)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:www.talamize.com)",
+      "WebFetch(domain:archive.org)",
+      "Bash(kill %1)",
+      "Bash(pkill -f download_tafsir)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npx --version)",
+      "Bash(python3 -c \"import os; print\\(os.getcwd\\(\\)\\)\")",
+      "Bash(python3 -c ' *)",
+      "Bash(ruby --version)",
+      "Bash(node --check /Users/ysdatabase/Desktop/Nour/js/livres.js)"
+    ]
+  }
+}

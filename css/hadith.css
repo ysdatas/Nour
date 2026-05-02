@@ -1,0 +1,15 @@
+/* Hadiths */
+.btabs{display:flex;gap:.5rem;margin-bottom:1rem}
+.bt{flex:1;padding:.5rem .25rem;border:.5px solid var(--gold-b);border-radius:8px;background:transparent;color:var(--iv40);font-family:'Cormorant Garamond',serif;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.bt.on{background:var(--gold-dim);border-color:var(--gold);color:var(--gold)}
+.qth{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.qp{padding:.28rem .8rem;border:.5px solid var(--gold-b);border-radius:100px;font-size:.62rem;letter-spacing:.07em;text-transform:uppercase;color:var(--iv40);cursor:pointer;background:transparent;transition:all .2s;font-family:'Cormorant Garamond',serif}
+.qp:hover{border-color:var(--gold);color:var(--gold)}
+.snav{display:flex;align-items:center;gap:.5rem;margin-bottom:1rem}
+.snav button{background:var(--card);border:.5px solid var(--gold-b);border-radius:8px;color:var(--gold);padding:.4rem .8rem;cursor:pointer;font-size:1rem;flex-shrink:0;transition:background .2s}
+.snav button:hover{background:var(--surface)}
+#stitle{flex:1;text-align:center;font-size:.65rem;letter-spacing:.09em;color:var(--iv40);text-transform:uppercase;padding:0 .25rem}
+.h-no{font-size:.58rem;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:.6rem}
+.h-ar{font-family:'Amiri',serif;font-size:1.1rem;text-align:right;direction:rtl;line-height:2;color:var(--gold-l);margin-bottom:.7rem;padding-bottom:.7rem;border-bottom:.5px solid var(--gold-b)}
+.h-fr{font-style:italic;font-size:.9rem;line-height:1.8;color:var(--iv70)}
+.bk-btn{background:var(--card);border:.5px solid var(--gold-b);border-radius:8px;color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:.78rem;padding:.4rem 1rem;cursor:pointer;margin-bottom:1rem;letter-spacing:.06em;display:inline-block}

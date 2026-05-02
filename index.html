@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>نور · Nour</title>
+<meta name="theme-color" content="#0d0d15">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<!-- Base & Layout -->
+<link rel="stylesheet" href="css/nour.css">
+
+<!-- Section CSS -->
+<link rel="stylesheet" href="css/qibla.css">
+<link rel="stylesheet" href="css/hadith.css">
+<link rel="stylesheet" href="css/rappels.css">
+<link rel="stylesheet" href="css/livres.css">
+<link rel="stylesheet" href="css/quran.css">
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="splash">
+  <svg class="sp-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="95" fill="none" stroke="rgba(201,168,76,.2)" stroke-width=".5"/>
+    <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(201,168,76,.3)" stroke-width=".5"/>
+    <polygon points="100,8 131,40 171,40 147,70 158,108 124,90 100,120 76,90 42,108 53,70 29,40 69,40" fill="none" stroke="rgba(201,168,76,.55)" stroke-width=".8"/>
+    <circle cx="100" cy="100" r="12" fill="none" stroke="rgba(201,168,76,.6)" stroke-width="1"/>
+    <circle cx="100" cy="100" r="4" fill="rgba(201,168,76,.5)"/>
+  </svg>
+  <div class="sp-title">&#x646;&#x648;&#x631;</div>
+  <div class="sp-rule"></div>
+  <div class="sp-sub">Lumi&egrave;re &middot; Application Islamique</div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <header class="hdr">
+    <div class="hdr-brand">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="opacity:.6">
+        <polygon points="12,1 14.5,8.5 22,8.5 16,13 18.5,20.5 12,16.5 5.5,20.5 8,13 2,8.5 9.5,8.5" fill="none" stroke="#c9a84c" stroke-width=".8"/>
+      </svg>
+      <div class="hdr-title">&#x646;&#x648;&#x631; &middot; Nour</div>
+    </div>
+    <div class="hdr-date" id="hdate"></div>
+  </header>
+
+  <main class="content">
+
+    <!-- QIBLA -->
+    <section class="page on" id="p-qibla">
+      <div class="ph">
+        <div class="ph-ar">&#x627;&#x644;&#x642;&#x628;&#x644;&#x629;</div>
+        <div class="ph-fr">Direction de La Mecque</div>
+      </div>
+      <div class="qw">
+        <div style="width:272px;height:272px">
+          <svg viewBox="0 0 272 272" style="width:100%;height:100%" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="136" cy="136" r="132" fill="none" stroke="rgba(201,168,76,.08)" stroke-width=".5"/>
+            <circle cx="136" cy="136" r="126" fill="none" stroke="rgba(201,168,76,.18)" stroke-width=".5"/>
+            <polygon points="136,18 186,52 206,108 186,164 136,198 86,164 66,108 86,52" fill="none" stroke="rgba(201,168,76,.1)" stroke-width=".7"/>
+            <g id="ticks"></g>
+            <text x="136" y="20" text-anchor="middle" font-family="Georgia" font-size="9" fill="rgba(245,240,232,.3)">N</text>
+            <text x="136" y="262" text-anchor="middle" font-family="Georgia" font-size="9" fill="rgba(245,240,232,.3)">S</text>
+            <text x="260" y="140" text-anchor="middle" font-family="Georgia" font-size="9" fill="rgba(245,240,232,.3)">E</text>
+            <text x="13" y="140" text-anchor="middle" font-family="Georgia" font-size="9" fill="rgba(245,240,232,.3)">O</text>
+            <circle cx="136" cy="136" r="86" fill="rgba(13,13,21,.7)" stroke="rgba(201,168,76,.18)" stroke-width=".5"/>
+            <g id="needle" style="transform-origin:136px 136px;transition:transform .5s ease">
+              <polygon points="136,54 141,134 136,142 131,134" fill="#c9a84c" opacity=".92"/>
+              <polygon points="136,142 141,134 136,210 131,134" fill="rgba(245,240,232,.1)"/>
+              <rect x="129" y="44" width="14" height="14" rx="2" fill="#c9a84c" opacity=".9"/>
+              <text x="136" y="55" text-anchor="middle" font-family="Amiri,serif" font-size="9" fill="#0d0d15" font-weight="700">&#x643;</text>
+            </g>
+            <circle cx="136" cy="136" r="7" fill="#0d0d15" stroke="rgba(201,168,76,.45)" stroke-width="1"/>
+            <circle cx="136" cy="136" r="3" fill="rgba(201,168,76,.55)"/>
+          </svg>
+        </div>
+        <div style="text-align:center">
+          <div style="font-family:'Amiri',serif;font-size:1.5rem;color:var(--gold)">&#x645;&#x643;&#x629; &#x627;&#x644;&#x645;&#x643;&#x631;&#x645;&#x629;</div>
+          <div id="qdeg" style="font-size:.7rem;letter-spacing:.15em;color:var(--iv40);margin-top:4px">&mdash;</div>
+          <div id="qstat" style="font-size:.8rem;color:var(--iv40);margin-top:4px;font-style:italic">Appuie sur le bouton pour te localiser</div>
+        </div>
+        <button class="btn" id="qbtn" onclick="initQibla()" style="font-size:.72rem;padding:.55rem 1.4rem">&#10022; Actualiser la localisation</button>
+
+        <!-- Horaires de prière -->
+        <div id="ptimes" class="pt-card" style="width:100%">
+          <div class="pt-head">
+            <div class="pt-head-ar">مواقيت الصلاة</div>
+            <div class="pt-head-fr">Horaires de prière</div>
+          </div>
+          <div class="pt-row" id="pt-fajr">
+            <div class="pt-left"><span class="pt-ar">الفجر</span><span class="pt-name">Fajr</span></div>
+            <div style="display:flex;align-items:center;gap:.6rem"><span class="pt-time">--:--</span><span class="pt-dot"></span></div>
+          </div>
+          <div class="pt-row" id="pt-dhuhr">
+            <div class="pt-left"><span class="pt-ar">الظهر</span><span class="pt-name">Dhuhr</span></div>
+            <div style="display:flex;align-items:center;gap:.6rem"><span class="pt-time">--:--</span><span class="pt-dot"></span></div>
+          </div>
+          <div class="pt-row" id="pt-asr">
+            <div class="pt-left"><span class="pt-ar">العصر</span><span class="pt-name">Asr</span></div>
+            <div style="display:flex;align-items:center;gap:.6rem"><span class="pt-time">--:--</span><span class="pt-dot"></span></div>
+          </div>
+          <div class="pt-row" id="pt-maghrib">
+            <div class="pt-left"><span class="pt-ar">المغرب</span><span class="pt-name">Maghrib</span></div>
+            <div style="display:flex;align-items:center;gap:.6rem"><span class="pt-time">--:--</span><span class="pt-dot"></span></div>
+          </div>
+          <div class="pt-row" id="pt-isha">
+            <div class="pt-left"><span class="pt-ar">العشاء</span><span class="pt-name">Isha</span></div>
+            <div style="display:flex;align-items:center;gap:.6rem"><span class="pt-time">--:--</span><span class="pt-dot"></span></div>
+          </div>
+        </div>
+
+        <div class="qv">
+          <div class="qv-ar">&#x648;&#x6E4;&#x645;&#x650;&#x646;&#x652; &#x62D;&#x64A;&#x652;&#x62B;&#x64F; &#x62E;&#x64E;&#x631;&#x64E;&#x62C;&#x652;&#x62A;&#x64E; &#x641;&#x64E;&#x648;&#x6E4;&#x644;&#x650;&#x651; &#x648;&#x64E;&#x62C;&#x652;&#x647;&#x64E;&#x643;&#x64E; &#x634;&#x64E;&#x637;&#x652;&#x631;&#x64E; &#x627;&#x644;&#x652;&#x645;&#x64E;&#x633;&#x652;&#x62C;&#x650;&#x62F;&#x650; &#x627;&#x644;&#x652;&#x62D;&#x64E;&#x631;&#x64E;&#x627;&#x645;&#x650;</div>
+          <div class="qv-fr">&laquo; De quelque endroit que tu partes, tourne ton visage vers la Mosqu&eacute;e Sacr&eacute;e. &raquo; &mdash; Al-Baqara 2:149</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HADITHS -->
+    <section class="page" id="p-hadith">
+      <div class="ph">
+        <div class="ph-ar">&#x627;&#x644;&#x62D;&#x62F;&#x64A;&#x62B;</div>
+        <div class="ph-fr">Hadiths &mdash; Bukhari &amp; Muslim</div>
+      </div>
+      <div class="btabs">
+        <button class="bt on" onclick="setBook('muslim',this)">Muslim</button>
+        <button class="bt" onclick="setBook('ibnmajah',this)">Ibn Majah</button>
+        <button class="bt" onclick="setBook('bukhari',this)">Bukhari</button>
+        <button class="bt" onclick="setBook('abudawud',this)">Abu Dawud</button>
+      </div>
+      <div class="sw">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="opacity:.5;flex-shrink:0">
+          <circle cx="6.5" cy="6.5" r="5.5" stroke="#c9a84c" stroke-width="1.2"/>
+          <line x1="10.5" y1="10.5" x2="14.5" y2="14.5" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <input id="hq" type="text" placeholder="n&deg;42 &middot; foi &middot; pri&egrave;re &middot; famille&hellip;" onkeydown="if(event.key==='Enter')hSearch()">
+        <button onclick="hSearch()">&#x2192;</button>
+      </div>
+      <div class="qth">
+        <button class="qp" onclick="qs('foi')">Foi</button>
+        <button class="qp" onclick="qs('prière')">Pri&egrave;re</button>
+        <button class="qp" onclick="qs('famille')">Famille</button>
+        <button class="qp" onclick="qs('zakat')">Zakat</button>
+        <button class="qp" onclick="qs('jeûne')">Je&ucirc;ne</button>
+        <button class="qp" onclick="qs('hajj')">Hajj</button>
+        <button class="qp" onclick="qs('comportement')">Comportement</button>
+        <button class="qp" onclick="qs('paradis')">Paradis</button>
+      </div>
+      <div class="snav">
+        <button onclick="prevNum()">&#x2190;</button>
+        <div id="stitle">Choisir un onglet pour charger</div>
+        <button onclick="nextNum()">&#x2192;</button>
+      </div>
+      <div id="hout"><div class="msg">S&eacute;lectionne un livre ci-dessus pour parcourir les hadiths.</div></div>
+    </section>
+
+    <!-- CORAN -->
+    <section class="page" id="p-quran">
+      <div class="ph">
+        <div class="ph-ar">&#x627;&#x644;&#x642;&#x631;&#x622;&#x646;</div>
+        <div class="ph-fr">Le Saint Coran &mdash; 114 Sourates</div>
+      </div>
+      <div class="q-snav" id="qnav" style="display:none">
+        <button onclick="qPrev()">&#x2190;</button>
+        <div id="qnav-lbl"></div>
+        <button onclick="qNext()">&#x2192;</button>
+        <button id="qmode-btn" onclick="qToggleMode()" style="font-size:.7rem;letter-spacing:.06em;padding:.4rem .9rem">&#x1F4D6; Lecture</button>
+        <button onclick="qBack()" style="font-size:.7rem;letter-spacing:.06em;padding:.4rem .9rem">&#x2630; Liste</button>
+      </div>
+      <div id="qlist"></div>
+    </section>
+
+    <!-- RAPPELS -->
+    <section class="page" id="p-rappels">
+      <div class="ph">
+        <div class="ph-ar">&#x627;&#x644;&#x62A;&#x630;&#x643;&#x64A;&#x631;</div>
+        <div class="ph-fr">Rappels du croyant</div>
+      </div>
+      <div class="nb" id="nb">&#10022; Rappels quotidiens activ&eacute;s.</div>
+      <button class="btn" style="width:100%;border-radius:8px;margin-bottom:1.25rem" onclick="reqNotif()">&#10022; Activer les rappels quotidiens</button>
+      <div id="rlist"></div>
+    </section>
+
+    <!-- LIVRES -->
+    <section class="page" id="p-livres">
+      <div class="ph">
+        <div class="ph-ar">المكتبة</div>
+        <div class="ph-fr">Bibliothèque Islamique</div>
+      </div>
+      <div class="lv-nav" id="lv-nav" style="display:none"></div>
+      <div id="lvlist"></div>
+    </section>
+
+  </main>
+
+  <nav class="nav">
+    <div class="ni on" data-p="qibla"><div class="ni-ic">🧭</div><div class="ni-lb">Qibla</div></div>
+    <div class="ni" data-p="hadith"><div class="ni-ic">📖</div><div class="ni-lb">Hadiths</div></div>
+    <div class="ni" data-p="quran"><div class="ni-ic">📜</div><div class="ni-lb">Coran</div></div>
+    <div class="ni" data-p="rappels"><div class="ni-ic">⭐</div><div class="ni-lb">Rappels</div></div>
+    <div class="ni" data-p="livres"><div class="ni-ic">📚</div><div class="ni-lb">Livres</div></div>
+  </nav>
+</div>
+
+<!-- Data -->
+<script src="js/rappels-data.js"></script>
+
+<!-- Logique par section -->
+<script src="js/qibla.js"></script>
+<script src="js/hadith.js"></script>
+<script src="js/quran.js"></script>
+<script src="js/rappels.js"></script>
+<script src="js/livres.js"></script>
+
+<!-- Initialisation (dépend de tout le reste) -->
+<script src="js/init.js"></script>
+
+</body>
+</html>

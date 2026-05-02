@@ -1,0 +1,104 @@
+/* Livres — En-têtes de section */
+.lv-section-hd{display:flex;align-items:baseline;gap:.7rem;margin:1.4rem 0 .7rem;padding-bottom:.4rem;border-bottom:.5px solid var(--gold-b);width:100%}
+.lv-section-hd:first-child{margin-top:0}
+.lv-section-ar{font-family:'Amiri',serif;font-size:1.1rem;color:var(--gold);opacity:.9}
+.lv-section-fr{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--iv20)}
+
+/* Grille style Finder */
+.lv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem}
+
+/* Carte livre — icône compacte */
+.lv-book{display:flex;flex-direction:column;align-items:stretch;background:var(--card);border:.5px solid var(--gold-b);border-radius:10px;overflow:hidden;cursor:pointer;transition:background .2s;min-height:0}
+.lv-book:hover{background:var(--surface)}
+.lv-spine{height:3px;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.3));flex-shrink:0}
+.lv-info{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:.55rem .4rem .5rem;gap:.2rem}
+.lv-book-ar{font-family:'Amiri',serif;font-size:.95rem;color:var(--gold);line-height:1.2}
+.lv-book-fr{font-size:.52rem;letter-spacing:.05em;text-transform:uppercase;color:var(--iv40);line-height:1.3}
+.lv-count{font-size:.5rem;letter-spacing:.05em;color:var(--iv20);margin-top:.1rem}
+.lv-arrow{display:none}
+.lv-badge{display:inline-block;font-size:.48rem;letter-spacing:.06em;text-transform:uppercase;background:var(--gold-dim);border:.5px solid var(--gold-b);color:var(--gold);border-radius:3px;padding:.08rem .3rem;margin-top:.2rem}
+.lv-badge-ar{background:rgba(201,168,76,.05);color:var(--iv40);border-color:rgba(245,240,232,.15)}
+.lv-badge-pdf{background:rgba(201,168,76,.05);color:var(--iv40);border-color:rgba(245,240,232,.15)}
+
+/* Tomes */
+.lv-tomes{display:flex;flex-direction:column;gap:.6rem}
+.lv-tome{display:flex;align-items:center;gap:.9rem;background:var(--card);border:.5px solid var(--gold-b);border-radius:10px;padding:.85rem 1rem;cursor:pointer;transition:background .2s;text-decoration:none;color:inherit}
+.lv-tome:hover{background:var(--surface)}
+.lv-tome-num{font-size:.62rem;letter-spacing:.1em;color:var(--gold);min-width:28px;opacity:.8;text-align:center}
+.lv-tome-info{flex:1}
+.lv-tome-title{font-size:.88rem;color:var(--ivory);letter-spacing:.03em}
+.lv-tome-sub{font-size:.6rem;letter-spacing:.07em;color:var(--iv40);margin-top:2px}
+
+/* Chapitres */
+.lv-chapters{display:flex;flex-direction:column;gap:.5rem}
+.lv-chap{background:var(--card);border:.5px solid var(--gold-b);border-radius:10px;overflow:hidden}
+.lv-chap-hd{display:flex;align-items:center;gap:.8rem;padding:.75rem 1rem;cursor:pointer;transition:background .2s}
+.lv-chap-hd:hover{background:var(--surface)}
+.lv-chap-n{font-size:.58rem;letter-spacing:.1em;color:var(--gold);min-width:22px;text-align:center;opacity:.7;flex-shrink:0}
+.lv-chap-title{flex:1;font-size:.82rem;color:var(--iv70);letter-spacing:.02em}
+.lv-chap-ico{font-size:.8rem;color:var(--gold);opacity:.4;transition:transform .2s;flex-shrink:0}
+.lv-chap.open .lv-chap-ico{transform:rotate(90deg)}
+.lv-chap-body{display:none;padding:0 .75rem .75rem}
+.lv-chap.open .lv-chap-body{display:block}
+
+/* Boutons téléchargement */
+.lv-dl{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:var(--gold-dim);border:.5px solid var(--gold-b);color:var(--gold);font-size:1.1rem;text-decoration:none;flex-shrink:0;transition:background .2s}
+.lv-dl:hover{background:rgba(201,168,76,.2)}
+.lv-dl-bar{display:flex;align-items:center;gap:.5rem;background:var(--gold-dim);border:.5px solid var(--gold-b);border-radius:10px;padding:.65rem 1rem;color:var(--gold);font-size:.72rem;letter-spacing:.07em;text-decoration:none;margin-bottom:1rem;transition:background .2s}
+.lv-dl-bar:hover{background:rgba(201,168,76,.2)}
+
+/* Badge livre numérique */
+.lv-badge-epub{background:rgba(201,168,76,.12);color:var(--gold);border-color:var(--gold-b)}
+
+/* Métadonnées livre */
+.lv-epub-meta{text-align:center;padding:1.2rem .5rem 1rem;border-bottom:.5px solid var(--gold-b);margin-bottom:1rem}
+.lv-epub-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--ivory);letter-spacing:.04em}
+.lv-epub-author{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-top:.3rem;opacity:.8}
+
+/* Table des matières */
+.lv-toc{display:flex;flex-direction:column;gap:.45rem}
+.lv-toc-row{display:flex;align-items:center;gap:.9rem;background:var(--card);border:.5px solid var(--gold-b);border-radius:10px;padding:.8rem 1rem;cursor:pointer;transition:background .2s}
+.lv-toc-row:hover{background:var(--surface)}
+.lv-toc-n{font-size:.58rem;letter-spacing:.1em;color:var(--gold);min-width:22px;text-align:center;opacity:.7;flex-shrink:0}
+.lv-toc-title{flex:1;font-size:.85rem;color:var(--iv70);letter-spacing:.02em}
+
+/* Lecteur */
+.lv-reader{display:flex;flex-direction:column;gap:.9rem}
+.lv-reader-hd{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding-bottom:.75rem;border-bottom:.5px solid var(--gold-b)}
+.lv-reader-chap-title{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold);letter-spacing:.05em;flex:1}
+.lv-reader-nav{display:flex;align-items:center;gap:.5rem;flex-shrink:0}
+.lv-reader-pager{font-size:.62rem;letter-spacing:.08em;color:var(--iv40);min-width:48px;text-align:center}
+.lv-page-btn{background:var(--card);border:.5px solid var(--gold-b);border-radius:7px;color:var(--gold);width:30px;height:30px;cursor:pointer;font-size:.9rem;display:inline-flex;align-items:center;justify-content:center;transition:background .2s;padding:0}
+.lv-page-btn:hover{background:var(--surface)}
+.lv-page-btn-dis{background:transparent;border:.5px solid rgba(201,168,76,.15);color:rgba(201,168,76,.25);width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;border-radius:7px;font-size:.9rem}
+.lv-reader-progress{height:2px;background:rgba(201,168,76,.12);border-radius:2px;overflow:hidden}
+.lv-reader-bar{height:100%;background:var(--gold);border-radius:2px;transition:width .3s}
+.lv-reader-body{font-size:.92rem;line-height:1.9;color:var(--iv70)}
+.lv-reader-body p{margin:0 0 .9em}
+.lv-reader-body p:last-child{margin-bottom:0}
+.lv-verse{color:var(--gold-l);font-style:italic}
+.lv-fn{font-size:.6rem;color:var(--gold);opacity:.7;vertical-align:super;margin-left:1px}
+.lv-reader-foot{display:flex;align-items:center;justify-content:center;gap:.7rem;padding-top:.5rem;border-top:.5px solid var(--gold-b)}
+.lv-chap-nav{display:flex;justify-content:space-between;gap:.5rem;padding-top:.5rem}
+.lv-chap-nav-btn{background:var(--card);border:.5px solid var(--gold-b);border-radius:8px;color:var(--gold);font-size:.65rem;letter-spacing:.06em;padding:.45rem .8rem;cursor:pointer;transition:background .2s;max-width:48%}
+.lv-chap-nav-btn:hover{background:var(--surface)}
+
+/* Sourates (Tafsir) */
+.lv-surah-list{display:flex;flex-direction:column;gap:.5rem}
+.lv-surah{display:flex;align-items:center;gap:.8rem;background:var(--card);border:.5px solid var(--gold-b);border-radius:10px;padding:.75rem 1rem;transition:background .2s}
+.lv-surah:hover:not(.lv-surah-na){background:var(--surface)}
+.lv-surah-n{font-size:.58rem;letter-spacing:.1em;color:var(--gold);min-width:22px;text-align:center;opacity:.7;flex-shrink:0}
+.lv-surah-info{flex:1}
+.lv-surah-ar{font-family:'Amiri',serif;font-size:1rem;color:var(--gold-l);line-height:1.2}
+.lv-surah-fr{font-size:.6rem;letter-spacing:.07em;color:var(--iv40);margin-top:2px;text-transform:uppercase}
+.lv-surah-read{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:var(--gold-dim);border:.5px solid var(--gold-b);color:var(--gold);font-size:1rem;text-decoration:none;flex-shrink:0;transition:background .2s;margin-right:.3rem}
+.lv-surah-read:hover{background:rgba(201,168,76,.2)}
+.lv-surah-na{opacity:.45}
+.lv-surah-na-lbl{font-size:.52rem;letter-spacing:.1em;color:var(--iv20);text-transform:uppercase;flex-shrink:0}
+
+/* Breadcrumb */
+.lv-nav{display:flex;align-items:center;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap}
+.lv-nav-btn{background:var(--card);border:.5px solid var(--gold-b);border-radius:8px;color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:.72rem;letter-spacing:.06em;padding:.35rem .9rem;cursor:pointer;transition:background .2s}
+.lv-nav-btn:hover{background:var(--surface)}
+.lv-nav-sep{color:var(--iv20);font-size:.7rem}
+.lv-nav-cur{font-size:.7rem;letter-spacing:.06em;color:var(--iv40)}
