@@ -20,7 +20,9 @@
       "Bash(python3 -c \"import os; print\\(os.getcwd\\(\\)\\)\")",
       "Bash(python3 -c ' *)",
       "Bash(ruby --version)",
-      "Bash(node --check /Users/ysdatabase/Desktop/Nour/js/livres.js)"
+      "Bash(node --check /Users/ysdatabase/Desktop/Nour/js/livres.js)",
+      "Bash(git --version)",
+      "Bash(gh --version)"
     ]
   }
 }
