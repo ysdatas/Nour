@@ -10,28 +10,29 @@ window.addEventListener('load', function () {
 
   buildTicks();
 
+  function goPage(p) {
+    document.querySelectorAll('.ni').forEach(function (i) { i.classList.remove('on'); });
+    document.querySelectorAll('.page').forEach(function (pg) { pg.classList.remove('on'); });
+    var ni = document.querySelector('.ni[data-p="' + p + '"]');
+    if (ni) ni.classList.add('on');
+    var pg = document.getElementById('p-' + p);
+    if (pg) pg.classList.add('on');
+    if (window.heroOnPageChange) window.heroOnPageChange(p);
+    if (p === 'hadith' && !window._hLoaded) { window._hLoaded = true; loadByNum(1); }
+    if (p === 'quran') renderSurahList();
+    if (p === 'livres' && !window._lvLoaded) { window._lvLoaded = true; renderLivres(); }
+  }
+  window.goPage = goPage;
+
   document.querySelectorAll('.ni').forEach(function (el) {
-    el.addEventListener('click', function () {
-      document.querySelectorAll('.ni').forEach(function (i) { i.classList.remove('on'); });
-      document.querySelectorAll('.page').forEach(function (p) { p.classList.remove('on'); });
-      el.classList.add('on');
-      var pg = document.getElementById('p-' + el.dataset.p);
-      if (pg) pg.classList.add('on');
-      if (el.dataset.p === 'hadith' && !window._hLoaded) {
-        window._hLoaded = true;
-        loadByNum(1);
-      }
-      if (el.dataset.p === 'quran') {
-        renderSurahList();
-      }
-      if (el.dataset.p === 'livres' && !window._lvLoaded) {
-        window._lvLoaded = true;
-        renderLivres();
-      }
-    });
+    el.addEventListener('click', function () { goPage(el.dataset.p); });
   });
 
   renderRappels();
+  renderAdhkarTabs();
+  renderNotifPanel();
+  renderAdhkarList();
+  startNotifEngine();
   // Auto-demander la localisation pour la qibla et les horaires
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(pos) {

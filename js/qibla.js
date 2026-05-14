@@ -1,4 +1,6 @@
 var _qibla = 0, _hdg = 0, _ob = false;
+var _la = null, _lo = null;
+var _ptimes = null, _ptDate = null;
 
 function buildTicks() {
   var g = document.getElementById('ticks');
@@ -40,32 +42,50 @@ function bindOr(ev) {
 var PT_KEYS = ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'];
 var PT_API  = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
 
+function updateActivePrayer() {
+  if (!_ptimes) return;
+  var nowMin = new Date().getHours() * 60 + new Date().getMinutes();
+  var mins = PT_API.map(function (k) {
+    var p = (_ptimes[k] || '00:00').split(':');
+    return parseInt(p[0]) * 60 + parseInt(p[1]);
+  });
+  var current = -1;
+  for (var i = mins.length - 1; i >= 0; i--) {
+    if (nowMin >= mins[i]) { current = i; break; }
+  }
+  PT_KEYS.forEach(function (k, i) {
+    var row = document.getElementById('pt-' + k);
+    if (row) row.classList.toggle('pt-active', i === current);
+  });
+}
+
 function fetchPrayerTimes(la, lo) {
+  _la = la; _lo = lo;
   var url = 'https://api.aladhan.com/v1/timings?latitude=' + la +
             '&longitude=' + lo + '&method=3';
   fetch(url).then(function (r) { return r.json(); }).then(function (d) {
     if (!d.data || !d.data.timings) return;
-    var t = d.data.timings;
-    var now = new Date();
-    var nowMin = now.getHours() * 60 + now.getMinutes();
-    var mins = PT_API.map(function (k) {
-      var p = (t[k] || '00:00').split(':');
-      return parseInt(p[0]) * 60 + parseInt(p[1]);
-    });
-    var current = -1;
-    for (var i = mins.length - 1; i >= 0; i--) {
-      if (nowMin >= mins[i]) { current = i; break; }
-    }
+    _ptimes = d.data.timings;
+    _ptDate = new Date().toDateString();
     var card = document.getElementById('ptimes');
     if (!card) return;
     PT_KEYS.forEach(function (k, i) {
       var row = document.getElementById('pt-' + k);
       if (!row) return;
-      row.querySelector('.pt-time').textContent = t[PT_API[i]] || '--:--';
-      row.classList.toggle('pt-active', i === current);
+      row.querySelector('.pt-time').textContent = _ptimes[PT_API[i]] || '--:--';
     });
+    updateActivePrayer();
   }).catch(function () {});
 }
+
+setInterval(function () {
+  if (_la === null) return;
+  if (new Date().toDateString() !== _ptDate) {
+    fetchPrayerTimes(_la, _lo);
+  } else {
+    updateActivePrayer();
+  }
+}, 60000);
 
 function initQibla() {
   var btn = document.getElementById('qbtn'), st = document.getElementById('qstat');

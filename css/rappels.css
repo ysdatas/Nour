@@ -5,3 +5,37 @@
 .rc-ti{font-family:'Amiri',serif;font-size:1.05rem;color:var(--gold);margin-bottom:.3rem}
 .rc-bo{font-size:.88rem;line-height:1.72;color:var(--iv70);margin-bottom:.7rem}
 .rc-hd{font-style:italic;font-size:.8rem;color:var(--iv40);border-top:.5px solid var(--gold-b);padding-top:.55rem}
+
+/* Invocations — Adhkar */
+.ak-section{margin-top:2rem}
+.ak-section-head{display:flex;align-items:baseline;gap:.7rem;margin-bottom:1.1rem}
+.ak-section-head-ar{font-family:'Amiri',serif;font-size:1.4rem;color:var(--gold)}
+.ak-section-head-fr{font-size:.78rem;color:var(--iv40);letter-spacing:.06em;text-transform:uppercase}
+.ak-tabs{display:flex;gap:.5rem;overflow-x:auto;padding-bottom:.5rem;margin-bottom:1.1rem;scrollbar-width:none}
+.ak-tabs::-webkit-scrollbar{display:none}
+.ak-tab{display:flex;align-items:center;gap:.35rem;background:var(--card);border:.5px solid var(--gold-b);border-radius:20px;padding:.4rem .85rem;font-size:.82rem;color:var(--iv70);cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.ak-tab-on{background:var(--gold-dim);border-color:var(--gold);color:var(--gold)}
+.ak-card{background:var(--card);border:.5px solid var(--gold-b);border-radius:12px;padding:1.2rem 1.2rem 1rem;margin-bottom:.9rem;position:relative}
+.ak-rep{position:absolute;top:.85rem;right:.9rem;background:var(--gold-dim);border:.5px solid var(--gold-b);border-radius:10px;padding:.15rem .55rem;font-size:.72rem;color:var(--gold);font-family:'Amiri',serif}
+.ak-ar{font-family:'Amiri',serif;font-size:1.25rem;line-height:2;color:var(--iv);direction:rtl;text-align:right;margin-bottom:.85rem;padding-right:2.5rem}
+.ak-fr{font-size:.86rem;line-height:1.75;color:var(--iv70);margin-bottom:.7rem}
+.ak-ref{font-style:italic;font-size:.78rem;color:var(--iv40);border-top:.5px solid var(--gold-b);padding-top:.5rem}
+.ak-tab-bell{font-size:.65rem;margin-left:.1rem}
+
+/* Notification panel */
+.ak-notif-panel{background:var(--gold-dim);border:.5px solid var(--gold-b);border-radius:10px;padding:.85rem 1rem;margin-bottom:1rem}
+.ak-np-row{display:flex;align-items:center;justify-content:space-between}
+.ak-np-label{font-size:.85rem;color:var(--iv70)}
+.ak-np-opts{margin-top:.85rem;display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.ak-np-opt{display:flex;flex-direction:column;gap:.3rem;font-size:.75rem;color:var(--iv40);text-transform:uppercase;letter-spacing:.04em}
+.ak-np-opt input[type="time"],.ak-np-opt select{width:100%;height:2.4rem;box-sizing:border-box;background:var(--card);border:.5px solid var(--gold-b);border-radius:7px;color:var(--iv);padding:0 .6rem;font-size:.88rem;-webkit-appearance:none;appearance:none;font-family:inherit}
+.ak-np-opt select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(201,168,76,.5)'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .7rem center;padding-right:2rem}
+.ak-np-hint{grid-column:1/-1;font-size:.74rem;color:var(--iv40);font-style:italic}
+
+/* Toggle switch */
+.ak-toggle{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0}
+.ak-toggle input{opacity:0;width:0;height:0}
+.ak-toggle-sl{position:absolute;cursor:pointer;inset:0;background:rgba(201,168,76,.15);border:.5px solid var(--gold-b);border-radius:24px;transition:.25s}
+.ak-toggle-sl:before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:var(--iv40);border-radius:50%;transition:.25s}
+.ak-toggle input:checked + .ak-toggle-sl{background:var(--gold-dim);border-color:var(--gold)}
+.ak-toggle input:checked + .ak-toggle-sl:before{transform:translateX(20px);background:var(--gold)}
