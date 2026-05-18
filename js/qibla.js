@@ -87,31 +87,70 @@ setInterval(function () {
   }
 }, 60000);
 
+function showLocError(st, btn, code) {
+  btn.disabled = false;
+  btn.textContent = '↺ Réessayer';
+  if (code === 1) {
+    // Permission refusée
+    st.innerHTML = 'Accès refusé. Active la localisation dans<br>Réglages &rsaquo; Safari (ou ton navigateur) &rsaquo; Localisation.';
+  } else if (code === 2) {
+    st.textContent = 'Position introuvable. Vérifie ton GPS.';
+  } else if (code === 3) {
+    st.textContent = 'Délai dépassé. Réessaie en extérieur.';
+  } else {
+    st.textContent = 'Localisation impossible. Réessaie.';
+  }
+}
+
+function requestOrientation(ev) {
+  if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+    DeviceOrientationEvent.requestPermission().then(function (r) {
+      if (r === 'granted') bindOr(ev);
+    }).catch(function () {});
+  } else {
+    bindOr(ev);
+  }
+}
+
 function initQibla() {
   var btn = document.getElementById('qbtn'), st = document.getElementById('qstat');
   btn.textContent = '⟳ Localisation…';
   btn.disabled = true;
-  if (!navigator.geolocation) { st.textContent = 'Non supporté.'; return; }
-  navigator.geolocation.getCurrentPosition(function (pos) {
-    var la = pos.coords.latitude, lo = pos.coords.longitude;
-    _qibla = calcQ(la, lo);
-    document.getElementById('qdeg').textContent = Math.round(_qibla) + '° depuis le Nord';
-    st.textContent = la.toFixed(3) + '° N · ' + lo.toFixed(3) + '° E';
-    btn.textContent = '✦ Qibla trouvée';
-    fetchPrayerTimes(la, lo);
-    if (!_ob) {
-      _ob = true;
-      var ev = ('ondeviceorientationabsolute' in window) ? 'deviceorientationabsolute' : 'deviceorientation';
-      if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
-        DeviceOrientationEvent.requestPermission().then(function (r) { if (r === 'granted') bindOr(ev); });
-      } else {
-        bindOr(ev);
-      }
-      setTimeout(function () { if (_hdg === 0) rotN(_qibla); }, 1500);
-    }
-  }, function () {
-    st.textContent = 'Localisation impossible.';
-    btn.textContent = '✦ Réessayer';
+  st.textContent = 'Récupération de ta position…';
+
+  if (!navigator.geolocation) {
+    st.textContent = 'Géolocalisation non supportée par ce navigateur.';
+    btn.textContent = '✦ Non disponible';
+    return;
+  }
+
+  // iOS Safari exige HTTPS — on prévient si ce n'est pas le cas
+  if (location.protocol === 'http:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+    st.innerHTML = 'La localisation requiert une connexion sécurisée (HTTPS).';
+    btn.textContent = '✦ Non disponible';
     btn.disabled = false;
-  });
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    function (pos) {
+      var la = pos.coords.latitude, lo = pos.coords.longitude;
+      _qibla = calcQ(la, lo);
+      document.getElementById('qdeg').textContent = Math.round(_qibla) + '° depuis le Nord';
+      st.textContent = la.toFixed(3) + '° N · ' + lo.toFixed(3) + '° E';
+      btn.textContent = '✦ Qibla trouvée';
+      fetchPrayerTimes(la, lo);
+      if (!_ob) {
+        _ob = true;
+        var ev = ('ondeviceorientationabsolute' in window) ? 'deviceorientationabsolute' : 'deviceorientation';
+        // requestOrientation doit être appelé depuis un geste utilisateur (ce click l'est)
+        requestOrientation(ev);
+        setTimeout(function () { if (_hdg === 0) rotN(_qibla); }, 1500);
+      }
+    },
+    function (err) {
+      showLocError(st, btn, err ? err.code : 0);
+    },
+    { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+  );
 }

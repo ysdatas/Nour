@@ -40,11 +40,10 @@
 <!-- APP -->
 <div id="app">
   <header class="hdr">
+    <div class="hdr-side"></div>
     <div class="hdr-brand">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="opacity:.6">
-        <polygon points="12,1 14.5,8.5 22,8.5 16,13 18.5,20.5 12,16.5 5.5,20.5 8,13 2,8.5 9.5,8.5" fill="none" stroke="#c9a84c" stroke-width=".8"/>
-      </svg>
-      <div class="hdr-title">&#x646;&#x648;&#x631; &middot; Nour</div>
+      <span class="hdr-logo">&#x2756;</span>
+      <div class="hdr-title">&#x646;&#x648;&#x631;</div>
     </div>
     <div class="hdr-date" id="hdate"></div>
   </header>
@@ -61,7 +60,7 @@
           نور · Application Islamique
         </div>
         <h1 class="hero-title">
-          Illumine ta<br>
+          Trouve la paix<br>
           <span class="gold">
             <span class="cycle-wrap"><span id="hero-cycle"></span></span>
           </span>
@@ -71,8 +70,8 @@
           Un compagnon spirituel pour ta prière, tes invocations et ta lecture — conçu pour t'accompagner au quotidien.
         </p>
         <div class="hero-btns">
-          <button class="hero-btn hero-btn-outline" onclick="goPage('qibla')">🧭 Qibla &amp; Horaires</button>
-          <button class="hero-btn hero-btn-fill" onclick="goPage('rappels')">⭐ Invocations</button>
+          <button class="hero-btn hero-btn-outline" onclick="goPage('qibla')">&#x2727; Qibla &amp; Horaires</button>
+          <button class="hero-btn hero-btn-fill" onclick="goPage('rappels')">&#x2726; Invocations</button>
         </div>
       </div>
     </section>
@@ -195,7 +194,8 @@
         <button onclick="qPrev()">&#x2190;</button>
         <div id="qnav-lbl"></div>
         <button onclick="qNext()">&#x2192;</button>
-        <button id="qmode-btn" onclick="qToggleMode()" style="font-size:.7rem;letter-spacing:.06em;padding:.4rem .9rem">&#x1F4D6; Lecture</button>
+        <button id="qmode-btn" onclick="qToggleMode()" style="font-size:.7rem;letter-spacing:.06em;padding:.4rem .9rem">&#x2741; Lecture</button>
+        <button id="qtajweed-btn" onclick="qSetTajweed()" style="font-size:.7rem;letter-spacing:.06em;padding:.4rem .9rem;display:none">&#x2756; Tajwid</button>
         <button onclick="qBack()" style="font-size:.7rem;letter-spacing:.06em;padding:.4rem .9rem">&#x2630; Liste</button>
       </div>
       <div id="qlist"></div>
@@ -235,12 +235,12 @@
   </main>
 
   <nav class="nav">
-    <div class="ni on" data-p="hero"><div class="ni-ic">🏠</div><div class="ni-lb">Accueil</div></div>
-    <div class="ni" data-p="qibla"><div class="ni-ic">🧭</div><div class="ni-lb">Qibla</div></div>
-    <div class="ni" data-p="hadith"><div class="ni-ic">📖</div><div class="ni-lb">Hadiths</div></div>
-    <div class="ni" data-p="quran"><div class="ni-ic">📜</div><div class="ni-lb">Coran</div></div>
-    <div class="ni" data-p="rappels"><div class="ni-ic">⭐</div><div class="ni-lb">Rappels</div></div>
-    <div class="ni" data-p="livres"><div class="ni-ic">📚</div><div class="ni-lb">Livres</div></div>
+    <div class="ni on" data-p="hero"><div class="ni-ic">&#x2726;</div><div class="ni-lb">Accueil</div></div>
+    <div class="ni" data-p="qibla"><div class="ni-ic">&#x2727;</div><div class="ni-lb">Qibla</div></div>
+    <div class="ni" data-p="hadith"><div class="ni-ic">&#x274B;</div><div class="ni-lb">Hadiths</div></div>
+    <div class="ni" data-p="quran"><div class="ni-ic">&#x2741;</div><div class="ni-lb">Coran</div></div>
+    <div class="ni" data-p="rappels"><div class="ni-ic">&#x2738;</div><div class="ni-lb">Rappels</div></div>
+    <div class="ni" data-p="livres"><div class="ni-ic">&#x2756;</div><div class="ni-lb">Livres</div></div>
   </nav>
 </div>
 

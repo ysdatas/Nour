@@ -1,6 +1,6 @@
 var ADHKAR = {
   matin: {
-    label: 'Matin', icon: '🌅', ar: 'الصباح', defaultTime: '06:30',
+    label: 'Matin', icon: '✧', ar: 'الصباح', defaultTime: '06:30',
     list: [
       {
         ar: 'أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ للهِ، وَالْحَمْدُ للهِ، لَا إِلَهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ.',
@@ -65,7 +65,7 @@ var ADHKAR = {
     ]
   },
   soir: {
-    label: 'Soir', icon: '🌆', ar: 'المساء', defaultTime: '18:00',
+    label: 'Soir', icon: '✦', ar: 'المساء', defaultTime: '18:00',
     list: [
       {
         ar: 'أَمْسَيْنَا وَأَمْسَى الْمُلْكُ للهِ، وَالْحَمْدُ للهِ، لَا إِلَهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ.',
@@ -120,7 +120,7 @@ var ADHKAR = {
     ]
   },
   sommeil: {
-    label: 'Sommeil', icon: '🌙', ar: 'النوم', defaultTime: '22:00',
+    label: 'Sommeil', icon: '❋', ar: 'النوم', defaultTime: '22:00',
     list: [
       {
         ar: 'بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا.',
@@ -165,7 +165,7 @@ var ADHKAR = {
     ]
   },
   reveil: {
-    label: 'Réveil', icon: '☀️', ar: 'الاستيقاظ', defaultTime: '06:00',
+    label: 'Réveil', icon: '✺', ar: 'الاستيقاظ', defaultTime: '06:00',
     list: [
       {
         ar: 'الْحَمْدُ للَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ.',
@@ -195,7 +195,7 @@ var ADHKAR = {
     ]
   },
   salat: {
-    label: 'Après prière', icon: '🧎', ar: 'بعد الصلاة', defaultTime: '13:00',
+    label: 'Après prière', icon: '❁', ar: 'بعد الصلاة', defaultTime: '13:00',
     list: [
       {
         ar: 'أَسْتَغْفِرُ اللهَ، أَسْتَغْفِرُ اللهَ، أَسْتَغْفِرُ اللهَ. اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ، تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ.',
@@ -230,7 +230,7 @@ var ADHKAR = {
     ]
   },
   repas: {
-    label: 'Repas', icon: '🍽️', ar: 'الطعام', defaultTime: '12:30',
+    label: 'Repas', icon: '✿', ar: 'الطعام', defaultTime: '12:30',
     list: [
       {
         ar: 'بِسْمِ اللهِ.',
@@ -260,7 +260,7 @@ var ADHKAR = {
     ]
   },
   mosquee: {
-    label: 'Mosquée', icon: '🕌', ar: 'المسجد', defaultTime: '12:30',
+    label: 'Mosquée', icon: '❂', ar: 'المسجد', defaultTime: '12:30',
     list: [
       {
         ar: 'أَعُوذُ بِاللهِ الْعَظِيمِ، وَبِوَجْهِهِ الْكَرِيمِ، وَسُلْطَانِهِ الْقَدِيمِ، مِنَ الشَّيْطَانِ الرَّجِيمِ.',
@@ -285,7 +285,7 @@ var ADHKAR = {
     ]
   },
   sortir: {
-    label: 'Sortir', icon: '🚪', ar: 'الخروج', defaultTime: '08:00',
+    label: 'Sortir', icon: '✤', ar: 'الخروج', defaultTime: '08:00',
     list: [
       {
         ar: 'بِسْمِ اللهِ، تَوَكَّلْتُ عَلَى اللهِ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللهِ.',
@@ -300,7 +300,7 @@ var ADHKAR = {
     ]
   },
   entrer: {
-    label: 'Rentrer', icon: '🏠', ar: 'الدخول', defaultTime: '19:00',
+    label: 'Rentrer', icon: '✣', ar: 'الدخول', defaultTime: '19:00',
     list: [
       {
         ar: 'بِسْمِ اللهِ وَلَجْنَا، وَبِسْمِ اللهِ خَرَجْنَا، وَعَلَى اللهِ رَبِّنَا تَوَكَّلْنَا.',
@@ -315,7 +315,7 @@ var ADHKAR = {
     ]
   },
   detresse: {
-    label: 'Détresse', icon: '🤲', ar: 'الكرب', defaultTime: '09:00',
+    label: 'Détresse', icon: '✸', ar: 'الكرب', defaultTime: '09:00',
     list: [
       {
         ar: 'لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ.',

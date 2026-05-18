@@ -26,7 +26,7 @@
 .hero-title .gold{color:var(--gold)}
 .hero-title .cycle-wrap{
   position:relative;display:inline-flex;justify-content:center;width:100%;
-  height:1.25em;overflow:hidden;
+  height:2.6em;overflow:hidden;
 }
 
 /* Animated words */

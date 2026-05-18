@@ -1,5 +1,5 @@
 (function(){
-  const words = ["prière","chemin","foi","cœur","journée"];
+  const words = ["dans ta prière","dans tes invocations","dans le Rappel","dans la lecture"];
   let current = 0;
   let timer = null;
 

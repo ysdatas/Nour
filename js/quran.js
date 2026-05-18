@@ -11,8 +11,9 @@ function qFetch(edition, n) {
   }).catch(function() { return fetch(cdn); });
 }
 var qCache = {};
+var qtCache = {};
 var qSurah = 0;
-var qMode = 'bilingual'; // 'bilingual' | 'reading'
+var qMode = 'bilingual'; // 'bilingual' | 'reading' | 'tajweed'
 
 var SURAHS = [
   [1,   "الفاتحة",    "Al-Fatiha — L'Ouverture",              7],
@@ -162,6 +163,9 @@ function loadSurah(n) {
   if (lbl) lbl.textContent = s[1] + " · " + n + "/114";
   var nav = document.getElementById("qnav");
   if (nav) nav.style.display = "flex";
+  var tb = document.getElementById("qtajweed-btn");
+  if (tb) tb.style.display = "inline-block";
+  if (qMode === 'tajweed') { loadTajweed(n); return; }
   qOut('<div class="msg">Chargement de la sourate ' + n + '…</div>');
 
   var key = "q" + n;
@@ -196,6 +200,7 @@ function loadSurah(n) {
 
 function renderVerses(data) {
   if (qMode === 'reading') { renderReading(data); return; }
+  if (qMode === 'tajweed') { loadTajweed(data.n); return; }
   var s = data.s;
   var html = '<div class="q-header">' +
     '<div class="q-h-ar">' + s[1] + '</div>' +
@@ -237,10 +242,83 @@ function renderReading(data) {
 function qToggleMode() {
   qMode = qMode === 'bilingual' ? 'reading' : 'bilingual';
   var btn = document.getElementById('qmode-btn');
-  if (btn) btn.textContent = qMode === 'reading' ? '📝 Bilingue' : '📖 Lecture';
-  if (qSurah && qCache['q' + qSurah]) renderVerses(qCache['q' + qSurah]);
+  if (btn) btn.textContent = qMode === 'reading' ? '❖ Bilingue' : '❁ Lecture';
+  if (qSurah) {
+    if (qCache['q' + qSurah]) renderVerses(qCache['q' + qSurah]);
+    else loadSurah(qSurah);
+  }
+}
+
+function qSetTajweed() {
+  if (qMode === 'tajweed') {
+    qMode = 'bilingual';
+    var tb = document.getElementById('qtajweed-btn');
+    if (tb) { tb.style.background = ''; tb.style.color = ''; }
+    if (qSurah) {
+      if (qCache['q' + qSurah]) renderVerses(qCache['q' + qSurah]);
+      else loadSurah(qSurah);
+    }
+  } else {
+    qMode = 'tajweed';
+    var tb = document.getElementById('qtajweed-btn');
+    if (tb) { tb.style.background = 'var(--gold-dim)'; tb.style.color = 'var(--gold)'; }
+    if (qSurah) loadTajweed(qSurah);
+  }
+}
+
+function loadTajweed(n) {
+  var key = 'qt' + n;
+  if (qtCache[key]) { renderTajweed(qtCache[key]); return; }
+  qOut('<div class="msg">Chargement Tajwid…</div>');
+  fetch('https://api.quran.com/api/v4/verses/by_chapter/' + n +
+        '?fields=text_uthmani_tajweed&per_page=300')
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (!d.verses || !d.verses.length) {
+        qOut('<div class="msg">Erreur chargement Tajwid.</div>');
+        return;
+      }
+      qtCache[key] = { n: n, s: SURAHS[n - 1], verses: d.verses };
+      renderTajweed(qtCache[key]);
+    })
+    .catch(function() {
+      qOut('<div class="msg">Erreur réseau. Vérifie ta connexion.</div>');
+    });
+}
+
+function renderTajweed(data) {
+  var s = data.s;
+  var html = '<div class="q-header">' +
+    '<div class="q-h-ar">' + s[1] + '</div>' +
+    '<div class="q-h-fr">' + s[2] + '</div>' +
+    (data.n !== 9 ? '<div class="q-bsm">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>' : '') +
+  '</div>';
+  html += '<div class="q-tajweed">';
+  for (var i = 0; i < data.verses.length; i++) {
+    html += data.verses[i].text_uthmani_tajweed + ' ';
+  }
+  html += '</div>';
+  html += '<div class="tj-legend">' +
+    '<div class="tj-legend-title">Guide des couleurs Tajwid</div>' +
+    '<div class="tj-leg"><span class="tj-dot" style="background:#4da6ff"></span><div><span class="tj-rule">Madd</span> Prolonge la voyelle (2 temps minimum)</div></div>' +
+    '<div class="tj-leg"><span class="tj-dot" style="background:#3ddc84"></span><div><span class="tj-rule">Idghaam</span> La lettre se fond dans la suivante — elles se fusionnent en une seule</div></div>' +
+    '<div class="tj-leg"><span class="tj-dot" style="background:#ffc107"></span><div><span class="tj-rule">Qalqalah</span> Légère vibration/rebond sur les lettres ق ط ب ج د quand elles sont sans voyelle</div></div>' +
+    '<div class="tj-leg"><span class="tj-dot" style="background:#e040fb"></span><div><span class="tj-rule">Ikhfâ</span> Le nûn/tanwîn disparaît à moitié avant certaines lettres — son nasal voilé</div></div>' +
+    '<div class="tj-leg"><span class="tj-dot" style="background:#00e5ff"></span><div><span class="tj-rule">Iqlab</span> Le nûn/tanwîn se transforme en mîm nasalisé avant la lettre ب</div></div>' +
+    '<div class="tj-leg"><span class="tj-dot" style="background:#69f0ae"></span><div><span class="tj-rule">Ghunna</span> Son nasal tenu 2 temps sur le nûn ou le mîm avec chadda</div></div>' +
+  '</div>';
+  qOut(html);
+  var page = document.querySelector('.content');
+  if (page) page.scrollTop = 0;
 }
 
 function qPrev() { if (qSurah > 1) loadSurah(qSurah - 1); }
 function qNext() { if (qSurah < 114) loadSurah(qSurah + 1); }
-function qBack() { renderSurahList(); }
+function qBack() {
+  var tb = document.getElementById('qtajweed-btn');
+  if (tb) { tb.style.display = 'none'; tb.style.background = ''; tb.style.color = ''; }
+  qMode = 'bilingual';
+  var btn = document.getElementById('qmode-btn');
+  if (btn) btn.textContent = '📖 Lecture';
+  renderSurahList();
+}
